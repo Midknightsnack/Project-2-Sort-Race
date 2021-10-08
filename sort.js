@@ -65,6 +65,37 @@ class Sort {
         } while (dbit);
         return A;
     }
+
+    quickSort(A) {
+        const l = 0, r = A.length-1;
+
+        if (l <= r) {
+            let s = this.Partition(A, l, r);
+            document.write("Pivot: " + s + "<br>");
+            this.quickSort(A.slice(l, s));
+            this.quickSort(A.slice(s+1, r+1));
+            document.write("new:" + A + "<br>");
+        }
+    }
+
+    Partition(A, l, r) {
+        let p = A[l], i = l, j = r+1;
+
+        document.write("Partition: " + A + "<br>");
+        while (i < j) {
+            while (i !== r && A[++i] <= p) continue;
+            while (j !== 0 && A[--j] >= p) continue;
+            document.write("l = " + i + " | r = " + j + "<br>");
+            [A[i], A[j]] = [A[j], A[i]];
+        };
+
+        [A[i], A[j]] = [A[j], A[i]];
+        [A[l], A[j]] = [A[j], A[l]];
+
+        document.write("Sorted Sub-Array: " + A + "<br>");
+        return j;
+    }
+
 }
 
 const sort = new Sort();
