@@ -37,3 +37,4 @@ Testing
 
 Credits
     Some code was borrowed from Professor Chuck Siska's example code.
+	In the last line of Merge(B, C, A) function, idea implemented from [https://www.youtube.com/watch?v=x_Z9FcAPmbk]

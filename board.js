@@ -32,11 +32,9 @@ class Board {
         if (input.length > 16) {
             input = input.slice(0, 16);
         }
-/*
         if (input.length < 16) {
             for (let i = input.length; i <= 16; ++i) { input += '0'; }
         }
-*/
 
         /*****TESTING ONLY*****/
 
@@ -57,7 +55,7 @@ class Board {
         document.write("<h2>---Insertion Sort---</h2> <br>"); sort.insertionSort(B);
         document.write("<h2>---Gold's Pore Sort---</h2> <br>"); sort.goldPoreSort(C);
         document.write("<h2>---Merge Sort---</h2> <br>"); sort.mergeSort(D);
-        document.write("<h2>---Quick Sort---</h2> <br>"); sort.quickSort(E);
+//        document.write("<h2>---Quick Sort---</h2> <br>"); sort.quickSort(E);
 
         /*****TESTING ONLY*****/
     }
