@@ -41,7 +41,7 @@ class Board {
         /*****TESTING ONLY*****/
 
         let A = [], B = [], C = [], D = [], E = [];
-		for (let i = 0; i < input.length; ++i) { A.push(input[i]); B.push(input[i]); C.push(input[i]); D.push(input[i]); E.push(input[i]); }
+	    for (let i = 0; i < input.length; ++i) { A.push(input[i]); B.push(input[i]); C.push(input[i]); D.push(input[i]); E.push(input[i]); }
         board.rowManager(A, B, C, D, E);
 
         /*****TESTING ONLY*****/
