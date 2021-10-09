@@ -66,6 +66,32 @@ class Sort {
         return A;
     }
 
+    mergeSort(A) {
+        const n = A.length;
+        let B = [], C = [];
+
+        if (n > 1) {
+			B = A.slice(0, Math.floor(n/2));
+			C = A.slice(Math.floor(n/2), n);
+            this.mergeSort(B);
+            this.mergeSort(C);
+			for (let k = 0; k < A.length; k++) A.pop();
+            A.push(this.Merge(B, C, A));
+        }
+		document.write("Sub-Array: " + A + "<br>");
+		return A;
+    }
+
+    Merge(B, C, A) {
+		document.write("Combining B: " + B + " and C: " + C + "<br>");
+
+        let i = 0, j = 0, k = 0, p = B.length, q = C.length;
+        while (i < p && j < q) {
+			A[k++] = (B[i] <= C[j]) ? B[i++] : C[j++];
+		}
+        return (i == p) ? C.slice(j, q) : B.slice(i, p);
+    }
+
     quickSort(A) {
         const l = 0, r = A.length-1;
 
@@ -95,7 +121,6 @@ class Sort {
         document.write("Sorted Sub-Array: " + A + "<br>");
         return j;
     }
-
 }
 
 const sort = new Sort();

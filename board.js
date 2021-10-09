@@ -37,11 +37,17 @@ class Board {
             for (let i = input.length; i <= 16; ++i) { input += '0'; }
         }
 */
-        let A = [], B = [], C = [], D = []; for (let i = 0; i < input.length; ++i) { A.push(input[i]); B.push(input[i]); C.push(input[i]); D.push(input[i]); }
-        board.rowManager(A, B, C, D);
+
+        /*****TESTING ONLY*****/
+
+        let A = [], B = [], C = [], D = [], E = [];
+		for (let i = 0; i < input.length; ++i) { A.push(input[i]); B.push(input[i]); C.push(input[i]); D.push(input[i]); E.push(input[i]); }
+        board.rowManager(A, B, C, D, E);
+
+        /*****TESTING ONLY*****/
     }
 
-    rowManager(A, B, C, D) {
+    rowManager(A, B, C, D, E) {
         var row = 0;
 
         /*****TESTING ONLY*****/
@@ -50,7 +56,8 @@ class Board {
         document.write("<h2>---Selection Sort---</h2> <br>"); sort.selectionSort(A);
         document.write("<h2>---Insertion Sort---</h2> <br>"); sort.insertionSort(B);
         document.write("<h2>---Gold's Pore Sort---</h2> <br>"); sort.goldPoreSort(C);
-        document.write("<h2>---Quick Sort---</h2> <br>"); sort.quickSort(D);
+        document.write("<h2>---Merge Sort---</h2> <br>"); sort.mergeSort(D);
+        document.write("<h2>---Quick Sort---</h2> <br>"); sort.quickSort(E);
 
         /*****TESTING ONLY*****/
     }
