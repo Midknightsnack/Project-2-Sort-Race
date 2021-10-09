@@ -73,17 +73,19 @@ class Sort {
         if (n > 1) {
             B = this.mergeSort(A.slice(0, Math.floor(n/2)));
             C = this.mergeSort(A.slice(Math.floor(n/2)));
-            return this.Merge(B, C, A);
+            return this.Merge(B, C);
         }
 		return A;
     }
 
-    Merge(B, C, A) {
-        let i = 0, j = 0, k = 0, p = B.length, q = C.length;
+    Merge(B, C) {
+		let A = [];
+        let i = 0, j = 0, p = B.length, q = C.length;
 
 	    document.write("Combining B: " + B + " and C: " + C + "<br>");
+
         while (i < p && j < q) {
-		    A[k++] = ((B[i] <= C[j]) ? B[i++] : C[j++]);
+		    A.push((B[i] <= C[j]) ? B[i++] : C[j++]);
 	    }
 
 		document.write("Sub-Array: " + [...A, ...B.slice(i, p), ...C.slice(j, q)] + "<br>");
@@ -96,10 +98,10 @@ class Sort {
         if (l <= r) {
             let s = this.Partition(A, l, r);
             document.write("Pivot: " + s + "<br>");
-            this.quickSort(A.slice(l, s));
-            this.quickSort(A.slice(s+1, r+1));
-            document.write("new:" + A + "<br>");
-        }
+			return [...this.quickSort(A.slice(l, s)), A[s], ...this.quickSort(A.slice(s+1))];
+        } else {
+			return A;
+		}
     }
 
     Partition(A, l, r) {
