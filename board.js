@@ -16,7 +16,10 @@
 function printText(str) {
     noStroke();
     textFont('Helvetica', 12);
-    fill(255);
+	let R = Math.random() * 254; 
+	let G = Math.random() * 254; 
+	let B = Math.random() * 254; 
+    fill(R, G, B);
     text(str, row, col); // note row and col are global
 }
 
