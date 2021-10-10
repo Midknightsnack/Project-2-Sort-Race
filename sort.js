@@ -19,7 +19,7 @@ class Sort {
         for (let i = 0; i < A.length; ++i) {
             let deck = A[i], hand = i-1;
     
-			// swaps elements in hand as long as deck element < current hand element
+            // swaps elements in hand as long as deck element < current hand element
             while (hand >= 0 && A[hand] > deck) { A[hand+1] = A[hand--]; }
             A[hand+1] = deck;
     
@@ -33,7 +33,7 @@ class Sort {
     
         for (let i = 0; i < A.length; ++i) {
             min = i;
-			// searches for the minimum element along A[0...n-i-1] elements
+            // searches for the minimum element along A[0...n-i-1] elements
             for (let j = i+1; j < A.length; ++j) {
                 if (A[j] < A[min]) min = j;
             }
@@ -77,32 +77,32 @@ class Sort {
             C = this.mergeSort(A.slice(Math.floor(n/2)));
             return this.Merge(B, C);
         }
-		return A;
+        return A;
     }
 
     Merge(B, C) {
-		// no need to pass array, A, as it is already being returned recursively in the call-stack
+        // no need to pass array, A, as it is already being returned recursively in the call-stack
         let A = [], i = 0, j = 0, p = B.length, q = C.length;
 
-	    document.write("Combining B: " + B + " and C: " + C + "<br>");
+        document.write("Combining B: " + B + " and C: " + C + "<br>");
         while (i < p && j < q) { A.push((B[i] <= C[j]) ? B[i++] : C[j++]); }
-		document.write("Sub-Array: " + [...A, ...B.slice(i, p), ...C.slice(j, q)] + "<br>");
+        document.write("Sub-Array: " + [...A, ...B.slice(i, p), ...C.slice(j, q)] + "<br>");
 
-		// returned array will concatenate 2 sub-arrays as one is deemed empty
-		return [...A, ...B.slice(i, p), ...C.slice(j, q)];
+        // returned array will concatenate 2 sub-arrays as one is deemed empty
+        return [...A, ...B.slice(i, p), ...C.slice(j, q)];
     }
 
     quickSort(A) {
         const l = 0, r = A.length-1;
 
-		// checks if sub-array contains one element or not
+        // checks if sub-array contains one element or not
         if (l <= r) {
             let s = this.Partition(A, l, r);
             document.write("Pivot: " + s + "<br>");
-			// calls recursively and returns an sorted array by appending the lhs+pivot+rhs sub-arrays
-			return [...this.quickSort(A.slice(l, s)), A[s], ...this.quickSort(A.slice(s+1))];
+            // calls recursively and returns an sorted array by appending the lhs+pivot+rhs sub-arrays
+            return [...this.quickSort(A.slice(l, s)), A[s], ...this.quickSort(A.slice(s+1))];
         }
-		return A;
+        return A;
     }
 
     Partition(A, l, r) {
