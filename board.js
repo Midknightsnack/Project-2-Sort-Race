@@ -13,6 +13,13 @@
 
 /***********************************/
 
+function printText(str) {
+	noStroke();
+	textFont('Helvetica', 12);
+	fill(255);
+	text(str, row, col); // note row and col are global
+}
+
 function raceManager() {
 	input = g_input_1.value(); // get user submission
 
@@ -44,7 +51,7 @@ function rowManager(A, B, C, D, E) {
 	/*****TESTING ONLY*****/
 }
 
-var width = 100, height = 50, cell = 10;
+var width = 100, height = 50, size = 10;
 
 var g_input_1;
 var g_button_1;
@@ -53,12 +60,9 @@ var input;
 var row = 10, col = 10;
 
 function setup() {
-    createCanvas((width * cell) + 4, height * cell);
+    createCanvas((width * size) + 4, height * size);
 
-	noStroke();
-	textFont('Helvetica', 12);
-	fill(255);
-	text("Insertion Sort | Selection Sort | Gold's Pore Sort | Merge Sort | Quick Sort", row, col);
+	printText("Insertion Sort | Selection Sort | Gold's Pore Sort | Merge Sort | Quick Sort")
 
     // Setup input-box for input and a callback fcn when button is pressed.
     g_input_1 = createInput(); // Create an input box, editable.
@@ -72,9 +76,6 @@ function draw() {
 	// updates every second
     if (frameCount % 60 === 0) {
 		col += 10;
-		noStroke();
-		textFont('Helvetica', 12);
-		fill(255);
-		text("im struggling", row, col);
+		printText("im struggling");
     }
 }
