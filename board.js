@@ -31,26 +31,6 @@ function raceManager() {
     alg_1.CB.buffer = [...input];
     alg_2.CB.buffer = [...input];
     alg_3.CB.buffer = [...input];
-
-    /*****TESTING ONLY*****
-
-    let A = [...input], B = [...input], C = [...input], D = [...input], E = [...input];
-    rowManager(A, B, C, D, E);
-
-    /*****TESTING ONLY*****/
-}
-
-function rowManager(A, B, C, D, E) {
-    /*****TESTING ONLY*****
-
-    document.write("Original String: " + input + "<br>");
-    document.write("<h2>---Selection Sort---</h2> <br>"); sort.selectionSort(A);
-    document.write("<h2>---Insertion Sort---</h2> <br>"); sort.insertionSort(B);
-    document.write("<h2>---Gold's Pore Sort---</h2> <br>"); sort.goldPoreSort(C);
-    document.write("<h2>---Merge Sort---</h2> <br>"); sort.mergeSort(D);
-    document.write("<h2>---Quick Sort---</h2>" + "<br>"); document.write("RESULT: " + sort.quickSort(E));
-
-    /*****TESTING ONLY*****/
 }
 
 var width = 100, height = 50, size = 10;
@@ -66,7 +46,6 @@ var alg_3 = new Manager("GoldsPore");
 
 function setup() {
     createCanvas((width * size) + 4, height * size);
-
     printText("Insertion Sort                                      Selection Sort                                     Gold's Pore Sort ", row, col)
 
     g_input_1 = createInput(); // Create an input box, editable.
@@ -76,12 +55,29 @@ function setup() {
     g_button_1.mousePressed(raceManager); // Hook button press to callback fcn.
 }
 
+function start() {
+	/* 1) at least one alg is not sorted
+	 * 2) user has inputed a string of hex values
+	 * 3) the number of frames = 60 (every second)
+	 */
+	return (!alg_1.CB.done || !alg_2.CB.done || !alg_3.CB.done) && input !== "" && frameCount % 60 === 0;
+}
+
+function solved(A) {
+	// brute-force alg for checking if array is sorted
+	for (let i = 0; i < A.length-1; i++) {
+		if (A[i] > A[i+1]) {
+			return false;
+		}
+	}
+	return true;
+}
+
 function draw() {
-    // updates every second
-    if (input !== "" && frameCount % 60 === 0) {
+	if (start()) {
         col += 10;
-        alg_1.execute();
-        alg_2.execute();
-        alg_3.execute();
+        alg_1.decode();
+        alg_2.decode();
+        alg_3.decode();
     }
 }

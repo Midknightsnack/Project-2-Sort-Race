@@ -9,48 +9,54 @@ class Manager {
         }
     }
 
-    save(CB) {
+    save_state(CB) {
         this.CB = CB;
     }
 
-    restore() {
+    restore_state() {
         return this.CB;
     }
 
-    execute() {
+    decode() {
         switch(this.name) {
-            case "Insertion" : test1(this.restore()); break;
-            case "Selection" : test2(this.restore()); break;
-            case "GoldsPore" : test3(this.restore()); break;
+            case "Insertion" : test1(this.restore_state()); break;
+            case "Selection" : test2(this.restore_state()); break;
+            case "GoldsPore" : test3(this.restore_state()); break;
             default : break;
         }
     }
+
+	execute() {
+	}
 }
 
 function test1(arg) {
     if (!arg.done) {
         let i = arg.idx, n = arg.buffer.length, A = arg.buffer;
 
+		/*****************from 'sort.js'************/	
+
         let deck = A[i], hand = i-1;
         // swaps elements in hand as long as deck element < current hand element
-        while (hand >= 0 && A[hand] > deck) { A[hand+1] = A[hand--]; }
+        while (hand >= 0 && A[hand] > deck) {
+			A[hand+1] = A[hand--];
+		}
         A[hand+1] = deck;
 
+		/*****************from 'sort.js'************/	
+
         printText(A.toString(), row, col); 
-        arg.idx = ++i;
-        arg.pass = i;
-        arg.done = (i === n ? true : false); 
-        arg.buffer = A;
 
-        if (arg.done) printText("Pass: " + arg.pass, row, col+10);
-
-        alg_1.save(arg);
+        alg_1.save_state({ idx: ++i, pass: i, buffer: A, done: solved(A) });
+        if (solved(A)) printText("Pass: " + arg.pass, row, col+10);
     }
 }
 
 function test2(arg) {
     if (!arg.done) {
         let i = arg.idx, n = arg.buffer.length, A = arg.buffer;
+
+		/*****************from 'sort.js'************/	
 
         let min = i;
         // searches for the minimum element along A[0...n-i-1] elements
@@ -59,22 +65,19 @@ function test2(arg) {
         }
         [A[i], A[min]] = [A[min], A[i]];
 
+		/*****************from 'sort.js'************/	
+
         printText(A.toString(), row+200, col); 
-
-        arg.idx = ++i;
-        arg.pass = i;
-        arg.done = (i === n ? true : false); 
-
-        if (arg.done) printText("Pass: " + arg.pass, row+200, col+10);
-
-        arg.buffer = A;
-        alg_2.save(arg);
+        alg_2.save_state({ idx: ++i, pass: i, buffer: A, done: solved(A) });
+        if (solved(A)) printText("Pass: " + arg.pass, row+200, col+10);
     }
 }
 
 function test3(arg) {
     if (!arg.done) {
         let i = arg.idx, n = arg.buffer.length, A = arg.buffer, dbit = arg.done;
+
+		/*****************from 'sort.js'************/	
 
 		dbit = true;
 		for (let k = 0; k < A.length; k+=2) { // even half-passes
@@ -90,15 +93,10 @@ function test3(arg) {
 			}
 		}
 
+		/*****************from 'sort.js'************/	
+
         printText(A.toString(), row+400, col); 
-
-        arg.idx = ++i;
-        arg.pass = i;
-        arg.done = dbit;
-
+        alg_3.save_state({ idx: ++i, pass: i, buffer: A, done: dbit });
         if (dbit) printText("Pass: " + arg.pass, row+400, col+10);
-
-        arg.buffer = A;
-        alg_3.save(arg);
 	}
 }
