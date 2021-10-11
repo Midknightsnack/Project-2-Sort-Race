@@ -38,5 +38,5 @@ Testing
 Credits
     Some code was borrowed from Professor Chuck Siska's example code.
 	Ideas borrowed from [https://www.youtube.com/watch?v=x_Z9FcAPmbk]
-		- last line of Merge(B, C, A) function
+		- last line of Merge(B, C) function
 		- last line of if statement of quickSort(A) function
