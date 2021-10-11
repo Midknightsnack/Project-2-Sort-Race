@@ -56,25 +56,25 @@ function setup() {
 }
 
 function start() {
-	/* 1) at least one alg is not sorted
-	 * 2) user has inputed a string of hex values
-	 * 3) the number of frames = 60 (every second)
-	 */
-	return (!alg_1.CB.done || !alg_2.CB.done || !alg_3.CB.done) && input !== "" && frameCount % 60 === 0;
+    /* 1) at least one alg is not sorted
+     * 2) user has inputed a string of hex values
+     * 3) the number of frames = 60 (every second)
+     */
+    return (!alg_1.CB.done || !alg_2.CB.done || !alg_3.CB.done) && input !== "" && frameCount % 60 === 0;
 }
 
 function solved(A) {
-	// brute-force alg for checking if array is sorted
-	for (let i = 0; i < A.length-1; i++) {
-		if (A[i] > A[i+1]) {
-			return false;
-		}
-	}
-	return true;
+    // brute-force alg for checking if array is sorted
+    for (let i = 0; i < A.length-1; i++) {
+        if (A[i] > A[i+1]) {
+            return false;
+        }
+    }
+    return true;
 }
 
 function draw() {
-	if (start()) {
+    if (start()) {
         col += 10;
         alg_1.decode();
         alg_2.decode();
