@@ -21,6 +21,7 @@ class Manager {
         switch(this.name) {
             case "Insertion" : test1(this.restore()); break;
             case "Selection" : test2(this.restore()); break;
+            case "GoldsPore" : test3(this.restore()); break;
             default : break;
         }
     }
@@ -69,4 +70,35 @@ function test2(arg) {
         arg.buffer = A;
         alg_2.save(arg);
     }
+}
+
+function test3(arg) {
+    if (!arg.done) {
+        let i = arg.idx, n = arg.buffer.length, A = arg.buffer, dbit = arg.done;
+
+		dbit = true;
+		for (let k = 0; k < A.length; k+=2) { // even half-passes
+			if (A[k+1] < A[k]) {
+				dbit = false;
+				[A[k+1], A[k]] = [A[k], A[k+1]]; // swaps the current and next element
+			}
+		}
+		for (let k = 1; k < A.length; k+=2) { // odd half-passes
+			if (A[k+1] < A[k]) {
+				dbit = false;
+				[A[k+1], A[k]] = [A[k], A[k+1]]; // swaps the current and next element
+			}
+		}
+
+        printText(A.toString(), row+400, col); 
+
+        arg.idx = ++i;
+        arg.pass = i;
+        arg.done = dbit;
+
+        if (dbit) printText("Pass: " + arg.pass, row+400, col+10);
+
+        arg.buffer = A;
+        alg_3.save(arg);
+	}
 }

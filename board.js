@@ -30,6 +30,7 @@ function raceManager() {
 
     alg_1.CB.buffer = [...input];
     alg_2.CB.buffer = [...input];
+    alg_3.CB.buffer = [...input];
 
     /*****TESTING ONLY*****
 
@@ -61,11 +62,12 @@ var input = "";
 
 var alg_1 = new Manager("Insertion");
 var alg_2 = new Manager("Selection");
+var alg_3 = new Manager("GoldsPore");
 
 function setup() {
     createCanvas((width * size) + 4, height * size);
 
-    printText("Insertion Sort                                      Selection Sort", row, col)
+    printText("Insertion Sort                                      Selection Sort                                     Gold's Pore Sort ", row, col)
 
     g_input_1 = createInput(); // Create an input box, editable.
     g_input_1.position(20, 30); // Put box on page.
@@ -80,5 +82,6 @@ function draw() {
         col += 10;
         alg_1.execute();
         alg_2.execute();
+        alg_3.execute();
     }
 }
