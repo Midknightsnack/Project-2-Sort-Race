@@ -7,10 +7,9 @@ Team Members
     Valerie Martinez
     Anthony Sanchez
 
-
-
 Introduction
-
+    This program uses HTML, Javascript (JS), and P5 to create
+    a sorting algorithm based on the user's input.
 
 Zip Contents
     File readme.txt. This file.
