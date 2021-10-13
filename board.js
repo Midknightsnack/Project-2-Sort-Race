@@ -50,7 +50,7 @@ function setup() {
 
     g_input_1 = createInput(); // Create an input box, editable.
     g_input_1.position(20, 30); // Put box on page.
-    g_button_1 = createButton("&#128581"); // Create button to help get input data.
+    g_button_1 = createButton("Submit &#128581"); // Create button to help get input data.
     g_button_1.position(160, 30); // Put button on page.
     g_button_1.mousePressed(raceManager); // Hook button press to callback fcn.
 }
