@@ -27,9 +27,9 @@ class Manager {
         if (!done) {
             let t = 0;
             switch(this.name) {
-                case "Insertion" : test1(this); break;
-                case "Selection" : test2(this); t+=200; break;
-                case "GoldsPore" : test3(this); t+=400; break;
+                case "Insertion" : test1(); break;
+                case "Selection" : test2(); t+=200; break;
+                case "GoldsPore" : test3(); t+=400; break;
                 default : break;
             }
             this.save_state({ idx: ++i, buffer: A }, t);
