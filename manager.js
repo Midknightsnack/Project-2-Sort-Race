@@ -1,3 +1,19 @@
+/*
+    Class: CPSC 335-03
+    Assignment: Project 2 - Sort Race
+
+    Authors:
+        Valerie Martinez (valeriemartnz@csu.fulleron.edu)
+        Anthony Sanchez (sanchezanthony244@csu.fullerton.edu)
+        Bradley Diep (bdippin12@csu.fullerton.edu)
+        Jason Duong (reddkingdom@csu.fullerton.edu)
+
+    Description:
+ */
+
+/***********************************/
+
+
 class Manager {
     constructor(name) {
         this.name = name;
@@ -10,8 +26,8 @@ class Manager {
     }
 
     save_state(CB, inc) {
-        printText(A.toString(), row+inc, col); 
         this.CB = CB;
+		output += [...this.CB.buffer] + ' ';
     }
 
     restore_state() {
@@ -28,8 +44,8 @@ class Manager {
             let t = 0;
             switch(this.name) {
                 case "Insertion" : test1(); break;
-                case "Selection" : test2(); t+=200; break;
-                case "GoldsPore" : test3(); t+=400; break;
+                case "Selection" : test2(); break;
+                case "GoldsPore" : test3(); break;
                 default : break;
             }
             this.save_state({ idx: ++i, buffer: A }, t);
@@ -38,7 +54,7 @@ class Manager {
 }
 
 // global memory
-var A, i, n, done, dbit;
+var A, i, n, done, dbit, output = [];
 
 function test1() {
     let deck = A[i], hand = i-1;
