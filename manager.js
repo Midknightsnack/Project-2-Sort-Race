@@ -25,9 +25,12 @@ class Manager {
         }
     }
 
-    save_state(CB, inc) {
+    save_state(CB) {
         this.CB = CB;
-		output += [...this.CB.buffer] + ' ';
+		for (const elm of this.CB.buffer) {
+			token += elm.toString();
+		}
+		token += " ";
     }
 
     restore_state() {
@@ -48,13 +51,13 @@ class Manager {
                 case "GoldsPore" : test3(); break;
                 default : break;
             }
-            this.save_state({ idx: ++i, buffer: A }, t);
+            this.save_state({ idx: ++i, buffer: A });
         }
     }
 }
 
 // global memory
-var A, i, n, done, dbit, output = [];
+var A, i, n, done, dbit, changes, token = "";
 
 function test1() {
     let deck = A[i], hand = i-1;
