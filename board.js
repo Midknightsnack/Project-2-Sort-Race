@@ -37,7 +37,7 @@ function raceManager() {
 }
 
 var height = 16, width = 50, size = 10;
-var row = 10, col = 10;
+var row = 0, col = 10;
 
 var g_input_1;
 var g_button_1;
@@ -53,7 +53,7 @@ function setup() {
 
 	for (let i = 0; i < width*size; i+=size) {
 		for (let j = 0; j < height*size; j+=size) {
-			if ((j%34) === 0) {
+			if ((j % 17) === 0) {
 				rect(j, i, size, size);
 			}
 		}

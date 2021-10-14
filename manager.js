@@ -13,7 +13,6 @@
 
 /***********************************/
 
-
 class Manager {
     constructor(name) {
         this.name = name;
@@ -46,9 +45,9 @@ class Manager {
         if (!done) {
             let t = 0;
             switch(this.name) {
-                case "Insertion" : test1(); break;
-                case "Selection" : test2(); break;
-                case "GoldsPore" : test3(); break;
+                case "Insertion" : insertionSort(); break;
+                case "Selection" : selectionSort(); break;
+                case "GoldsPore" : goldPoreSort(); break;
                 default : break;
             }
             this.save_state({ idx: ++i, buffer: A });
@@ -59,7 +58,7 @@ class Manager {
 // global memory
 var A, i, n, done, dbit, changes, token = "";
 
-function test1() {
+function insertionSort() {
     let deck = A[i], hand = i-1;
     // swaps elements in hand as long as deck elm < current hand elm 
     while (hand >= 0 && A[hand] > deck) {
@@ -68,7 +67,7 @@ function test1() {
     A[hand+1] = deck;
 }
 
-function test2() {
+function selectionSort() {
     let min = i;
     // searches for the minimum element along A[0...n-i-1] elements
     for (let j = i+1; j < n; ++j) {
@@ -77,7 +76,7 @@ function test2() {
     [A[i], A[min]] = [A[min], A[i]];
 }
 
-function test3() {
+function goldPoreSort() {
     dbit = true;
     for (let k = 0; k < n; k+=2) { // even half-passes
         if (A[k+1] < A[k]) {
