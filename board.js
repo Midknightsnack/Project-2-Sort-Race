@@ -29,7 +29,7 @@ function raceManager() {
     // truncates string if > 16
     if (input.length > 16) { input = input.slice(0, 16); }
     // extends string if < 16
-//    if (input.length < 16) { for (let i = input.length; i <= 16; ++i) { input += '0'; } }
+    if (input.length < 16) { for (let i = input.length; i < 16; ++i) { input += '0'; } }
 
     alg_1.CB.buffer = [...input];
     alg_2.CB.buffer = [...input];
@@ -53,7 +53,7 @@ function setup() {
 
 	for (let i = 0; i < width*size; i+=size) {
 		for (let j = 0; j < height*size; j+=size) {
-			if ((j%17) === 0) {
+			if ((j%34) === 0) {
 				rect(j, i, size, size);
 			}
 		}

@@ -30,7 +30,7 @@ class Manager {
 		for (const elm of this.CB.buffer) {
 			token += elm.toString();
 		}
-		token += " ";
+        token += " ";
     }
 
     restore_state() {
