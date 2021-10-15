@@ -46,8 +46,8 @@ class Manager {
                 default : break;
             }
             this.save_state({ idx: ++i, buffer: A });
+            token += this.CB.buffer.join('') + " ";
         }
-        token += this.CB.buffer.join('') + " ";
     }
 }
 

@@ -11,32 +11,30 @@
     Description:
  */
 
-/***********************************/
-
 function printText() {
     noStroke();
     textFont('Helvetica', 12);
     fill(255);
 
-    for (let i = 0; i < token.length; i++, row += 10) {
-        text(token[i], row, col); // note row and col are global
-    }
+    for (let i = 0; i < token.length; i++, row += 10) text(token[i], row, col);
 }
 
 function raceManager() {
     input = g_input_1.value(); // get user submission
 
-    // truncates string if > 16
-    if (input.length > 16) { input = input.slice(0, 16); }
-    // extends string if < 16
-    if (input.length < 16) { for (let i = input.length; i < 16; ++i) { input += '0'; } }
+    if (input.length > 16) { // truncates string if > 16
+        input = input.slice(0, 16);
+    }
+    if (input.length < 16) { // extends string if < 16
+        for (let i = input.length; i < 16; ++i) input += '0';
+    }
 
     alg_1.CB.buffer = [...input];
     alg_2.CB.buffer = [...input];
     alg_3.CB.buffer = [...input];
 }
 
-var height = 16, width = 50, size = 10;
+var _width = 100, _height = 50, _cell = 10;
 var row = 0, col = 10;
 
 var g_input_1;
@@ -48,16 +46,10 @@ var alg_2 = new Manager("Selection");
 var alg_3 = new Manager("GoldsPore");
 
 function setup() {
-    createCanvas((size * width) + 4, size * height);
-    text("Insertion Sort  Selection Sort  Gold's Pore Sort  Merge Sort  Quick Sort", row, col); // note row and col are global
-
-    for (let i = 0; i < width*size; i+=size) {
-        for (let j = 0; j < height*size; j+=size) {
-            if ((j % 17) === 0) {
-                rect(j, i, size, size);
-            }
-        }
-    }
+    let w = _width*_cell+4;
+    let h = _height*_cell;
+    createCanvas(w, h);
+	draw_grid(20, 20, 'white', 'yellow');
 
     g_input_1 = createInput(); // Create an input box, editable.
     g_input_1.position(20, 30); // Put box on page.
@@ -69,8 +61,7 @@ function setup() {
 function start() {
     /* 1) at least one alg is not sorted
      * 2) user has inputed a string of hex values
-     * 3) the number of frames = 60 (every second)
-     */
+     * 3) the number of frames = 60 (every second) */
     return (!alg_1.CB.done || !alg_2.CB.done || !alg_3.CB.done) && input !== "" && frameCount % 60 === 0;
 }
 
