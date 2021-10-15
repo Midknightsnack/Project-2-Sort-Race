@@ -18,9 +18,9 @@ function printText() {
     textFont('Helvetica', 12);
     fill(255);
 
-	for (let i = 0; i < token.length; i++, row += 10) {
-		text(token[i], row, col); // note row and col are global
-	}
+    for (let i = 0; i < token.length; i++, row += 10) {
+        text(token[i], row, col); // note row and col are global
+    }
 }
 
 function raceManager() {
@@ -49,15 +49,15 @@ var alg_3 = new Manager("GoldsPore");
 
 function setup() {
     createCanvas((size * width) + 4, size * height);
-	text("Insertion Sort  Selection Sort  Gold's Pore Sort  Merge Sort  Quick Sort", row, col); // note row and col are global
+    text("Insertion Sort  Selection Sort  Gold's Pore Sort  Merge Sort  Quick Sort", row, col); // note row and col are global
 
-	for (let i = 0; i < width*size; i+=size) {
-		for (let j = 0; j < height*size; j+=size) {
-			if ((j % 17) === 0) {
-				rect(j, i, size, size);
-			}
-		}
-	}
+    for (let i = 0; i < width*size; i+=size) {
+        for (let j = 0; j < height*size; j+=size) {
+            if ((j % 17) === 0) {
+                rect(j, i, size, size);
+            }
+        }
+    }
 
     g_input_1 = createInput(); // Create an input box, editable.
     g_input_1.position(20, 30); // Put box on page.
@@ -86,12 +86,12 @@ function solved(A) {
 
 function draw() {
     if (start()) {
-		row = 10;
+        row = 10;
         col += 10;
-		token = "";
+        token = "";
         alg_1.decode();
         alg_2.decode();
         alg_3.decode();
-		printText();
+        printText();
     }
 }

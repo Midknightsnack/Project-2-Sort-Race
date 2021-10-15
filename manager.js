@@ -26,10 +26,6 @@ class Manager {
 
     save_state(CB) {
         this.CB = CB;
-		for (const elm of this.CB.buffer) {
-			token += elm.toString();
-		}
-        token += " ";
     }
 
     restore_state() {
@@ -41,9 +37,8 @@ class Manager {
     }
 
     decode() {
-        this.restore_state();
-        if (!done) {
-            let t = 0;
+        this.restore_state(); // restores memory from previous pass/iteration
+        if (!done) { // checks if current algorithm has already been sorted
             switch(this.name) {
                 case "Insertion" : insertionSort(); break;
                 case "Selection" : selectionSort(); break;
@@ -52,11 +47,12 @@ class Manager {
             }
             this.save_state({ idx: ++i, buffer: A });
         }
+        token += this.CB.buffer.join('') + " ";
     }
 }
 
 // global memory
-var A, i, n, done, dbit, changes, token = "";
+var A, i, n, done, dbit, token = "";
 
 function insertionSort() {
     let deck = A[i], hand = i-1;
@@ -73,6 +69,7 @@ function selectionSort() {
     for (let j = i+1; j < n; ++j) {
         if (A[j] < A[min]) min = j;
     }
+    // swaps element at index i and min
     [A[i], A[min]] = [A[min], A[i]];
 }
 
