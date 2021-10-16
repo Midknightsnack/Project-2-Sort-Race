@@ -15,9 +15,9 @@
 function draw_grid (rminor, rmajor, rstroke, rfill)  {
     stroke(rstroke);
     fill(rfill);
-    let sz = _cell;
-    let width = _width*_cell;
-    let height = _height*_cell; 
+    let sz = board.cell;
+    let width = board.width*board.cell;
+    let height = board.height*board.cell; 
     for (var ix = 0; ix < width; ix += rminor) {
         let big_linep = (ix % rmajor == 0);
         let line_wgt = 1;

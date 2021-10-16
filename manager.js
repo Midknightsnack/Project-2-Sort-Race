@@ -33,7 +33,7 @@ class Manager {
         i = this.CB.idx;
         n = this.CB.buffer.length;
         dbit = this.CB.done;
-        done = solved(A);
+        done = board.solved(A);
     }
 
     decode() {
