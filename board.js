@@ -16,6 +16,7 @@ var message, target, input;
 var alg_1 = new Manager("Insertion");
 var alg_2 = new Manager("Selection");
 var alg_3 = new Manager("GoldsPore");
+var alg_4 = new Manager("MergeSort");
 
 class Board {
     constructor(width, height, cell) {
@@ -39,37 +40,35 @@ class Board {
         alg_1.CB.buffer = [...input];
         alg_2.CB.buffer = [...input];
         alg_3.CB.buffer = [...input];
+        alg_4.CB.buffer = [...input];
     }
 
     start() {
         /* 1) at least one alg is not sorted
          * 2) user has inputed a string of hex values
          * 3) the number of frames = 60 (every second) */
-        return (!alg_1.CB.done || !alg_2.CB.done || !alg_3.CB.done) && input !== "" && frameCount % 60 === 0;
+        return (!alg_1.CB.done || !alg_2.CB.done || !alg_3.CB.done || !alg_4.CB.done) && input !== "" && frameCount % 60 === 0;
     }
 
     run() {
-        if (this.start()) {
-            this.row = 5;
-            this.col += 20;
-            token = "";
+        this.row = 5;
+        this.col += 20;
+        token = "";
 
-            alg_1.decode();
-            alg_2.decode();
-            alg_3.decode();
-     
-            textSize(15);
-            fill(255);
-            for (let i = 0; i < token.length; i++, this.row += 20) text(token[i], this.row, this.col);
-        }
+        alg_1.decode();
+        alg_2.decode();
+        alg_3.decode();
+        alg_4.decode();
+    
+        textSize(15);
+        fill(255);
+        for (let i = 0; i < token.length; i++, this.row += 20) text(token[i], this.row, this.col);
     }
 
     solved(A) {
         // brute-force alg for checking if array is sorted
         for (let i = 0; i < A.length-1; i++) {
-            if (A[i] > A[i+1]) {
-                return false;
-            }
+            if (A[i] > A[i+1]) return false;
         }
         return true;
     }
@@ -89,5 +88,5 @@ function setup() {
 }
 
 function draw() {
-    board.run();
+    if (board.start()) board.run();
 }

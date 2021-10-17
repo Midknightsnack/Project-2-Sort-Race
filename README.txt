@@ -35,7 +35,7 @@ Testing
 
 
 Credits
-    Some code was borrowed from Professor Chuck Siska's example code.
-	Ideas borrowed from [https://www.youtube.com/watch?v=x_Z9FcAPmbk]
-		- last line of Merge(B, C) function
-		- last line of if statement of quickSort(A) function
+    [ https://www.youtube.com/watch?v=x_Z9FcAPmbk ]
+        - last line of Merge(B, C) function
+    [ https://stackabuse.com/how-to-split-an-array-into-even-chunks-in-javascript/ ] 
+        - implemented code in Divide() function
