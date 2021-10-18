@@ -9,7 +9,7 @@
         Jason Duong (reddkingdom@csu.fullerton.edu)
 
     Description:
-        code borrowed from professor -> draw a fancy grid with major and minor lines
+        code borrowed from professor -> draws a fancy grid with major and minor lines
 */
 
 function draw_grid (rminor, rmajor, rstroke, rfill)  {

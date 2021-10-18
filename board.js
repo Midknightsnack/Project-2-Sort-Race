@@ -9,6 +9,7 @@
         Jason Duong (reddkingdom@csu.fullerton.edu)
 
     Description:
+        contains functions that control how the entire program operates
  */
 
 var message, target, input;
@@ -24,7 +25,7 @@ class Board {
         this.height = height;
         this.cell = cell;
         this.row = 0;
-        this.col = 0;
+        this.col = 20;
     }
 
     make() {
@@ -33,7 +34,7 @@ class Board {
         if (input.length > 16) { // truncates string if > 16
             input = input.slice(0, 16);
         }
-        if (input.length < 16) { // extends string if < 16
+        if (input.length < 16) { // string padding if < 16
             for (let i = input.length; i < 16; ++i) input += '0';
         }
 
@@ -47,11 +48,11 @@ class Board {
         /* 1) at least one alg is not sorted
          * 2) user has inputed a string of hex values
          * 3) the number of frames = 60 (every second) */
-        return (!alg_1.CB.done || !alg_2.CB.done || !alg_3.CB.done || !alg_4.CB.done) && input !== "" && frameCount % 60 === 0;
+        return (!alg_1.CB.done || !alg_2.CB.done || !alg_3.CB.done || !alg_4.CB.done) && input !== undefined && frameCount % 60 === 0;
     }
 
     run() {
-        this.row = 5;
+        this.row = 25;
         this.col += 20;
         token = "";
 
@@ -63,14 +64,6 @@ class Board {
         textSize(15);
         fill(255);
         for (let i = 0; i < token.length; i++, this.row += 20) text(token[i], this.row, this.col);
-    }
-
-    solved(A) {
-        // brute-force alg for checking if array is sorted
-        for (let i = 0; i < A.length-1; i++) {
-            if (A[i] > A[i+1]) return false;
-        }
-        return true;
     }
 }
 

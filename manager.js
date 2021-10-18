@@ -9,9 +9,8 @@
         Jason Duong (reddkingdom@csu.fullerton.edu)
 
     Description:
+        manages each sorting algorithm by saving and reloding their states
  */
-
-/***********************************/
 
 class Manager {
     constructor(name) {
@@ -19,7 +18,6 @@ class Manager {
         this.CB = { // Control Block
             idx: 0,
             size: 1,
-            pass: 0,
             buffer: [],
             done: false,
         }
@@ -29,33 +27,30 @@ class Manager {
         this.CB = CB;
     }
 
-    restore_state() {
+    reload_state() {
         A = this.CB.buffer;
         i = this.CB.idx;
         n = this.CB.buffer.length;
         s = this.CB.size;
-        dbit = this.CB.done;
-        done = board.solved(A);
+        sorted = this.CB.done;
     }
 
     decode() {
-        this.restore_state(); // restores memory from previous pass/iteration
-        if (!done) { // checks if current algorithm has already been sorted
-            switch(this.name) {
-                case "Insertion" : insertionSort(); break;
-                case "Selection" : selectionSort(); break;
-                case "GoldsPore" : goldPoreSort(); break;
-                case "MergeSort" : mergeSort(); break;
-                default : break;
-            }
-            this.save_state({ idx: ++i, size: 2*s, buffer: A });
-            token += this.CB.buffer.join('') + " ";
+        this.reload_state(); // restores memory from previous pass/iteration
+        switch(this.name) {
+            case "Insertion" : insertionSort(); sorted = (i==n); break;
+            case "Selection" : selectionSort(); sorted = (i==n); break;
+            case "GoldsPore" : goldPoreSort();  sorted = dbit;   break;
+            case "MergeSort" : mergeSort();     sorted = s>n;    break;
+            default : break;
         }
+        this.save_state({ idx: ++i, size: 2*s, buffer: A, done: sorted });
+        if (!sorted) token += this.CB.buffer.join('') + " ";
     }
 }
 
 // global memory
-var A, i, n, s, done, dbit, token = "";
+var A, ax, bx, i, n, s, sorted, dbit, token = "";
 
 function insertionSort() {
     let deck = A[i], hand = i-1;
@@ -93,7 +88,7 @@ function goldPoreSort() {
 }
 
 function mergeSort() {
-    let ax = Divide(A, s), bx = [];
+    ax = Divide(A, s), bx = [];
     // get the first two partitioned sub-arrays
     while (ax.length > 1) bx.push(Merge(ax.shift(), ax.shift()));
     // @flat() [ converted KD-array to 1D-array ]

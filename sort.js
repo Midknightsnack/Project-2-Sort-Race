@@ -1,18 +1,4 @@
-/*
-    Class: CPSC 335-03
-    Assignment: Project 2 - Sort Race
-
-    Authors:
-        Valerie Martinez (valeriemartnz@csu.fulleron.edu)
-        Anthony Sanchez (sanchezanthony244@csu.fullerton.edu)
-        Bradley Diep (bdippin12@csu.fullerton.edu)
-        Jason Duong (reddkingdom@csu.fullerton.edu)
-
-    Description:
-        Fundamental Implementations of Sorting Algorithms
- */
-
-/* FOR REFERENCE ONLY */
+// ~~~REMOVE THIS FILE PRIOR TO SUBMISSION~~~
 
 class Sort {
     constuctor = null;
