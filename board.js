@@ -78,7 +78,7 @@ const board = new Board(160, 50, 10);
 
 function setup() {
     createCanvas((board.width * board.cell) + 4, board.height * board.cell);
-    draw_grid(20, 20, 'white', 'yellow');
+    draw_grid(20, 20, 'green', 'yellow');
 
     message = createInput(); // Create an input box, editable.
     message.position(20, 30); // Put box on page.
