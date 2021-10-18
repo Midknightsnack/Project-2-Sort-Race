@@ -14,13 +14,12 @@
 
 class Manager {
     constructor(name) {
-        this.name = name;
+        this.name = name; // Unique Identifier
         this.CB = { // Control Block
             idx: 0,
             size: 1,
             buffer: [],
             done: false,
-            color: [],
         }
     }
 
@@ -34,7 +33,6 @@ class Manager {
         n = this.CB.buffer.length;
         s = this.CB.size;
         sorted = this.CB.done;
-        c = this.CB.color;
     }
 
     decode() {
@@ -43,17 +41,27 @@ class Manager {
             case "Insertion" : insertionSort(); sorted = (i==n); break;
             case "Selection" : selectionSort(); sorted = (i==n); break;
             case "GoldsPore" : goldPoreSort();  sorted = dbit;   break;
-            case "MergeSort" : mergeSort();     sorted = s>=n;    break;
+            case "MergeSort" : mergeSort();     sorted = s>=n;   break;
             default : break;
         }
-        this.save_state({ idx: ++i, size: 2*s, buffer: A, done: sorted, color: c });
+        // for each pass, size will be doubled which is equivalent to squaring the current pass, i
+        this.save_state({ idx: ++i, size: 2*s, buffer: A, done: sorted });
         if (!sorted) token += this.CB.buffer.join('') + " ";
     }
 }
 
-// global memory
+/* ---Global Memory---
+ * @A      [ the current array ]
+ * @ax     [ an auxiliary array of partitioned elements based on current size ]
+ * @bx     [ an auxiliary array providing a template to assign to array A ]
+ * @i      [ the current index | some algs do not use this variable ]
+ * @n      [ the current array size ]
+ * @s      [ the current size of each partitioned array in ax ]
+ * @sorted [ a boolean value that signals an array is sorted under some conditions of the algorithm used ]
+ * @dbit   [ a boolean value, used in Gold's Pore Sort, to signal whether the array is sorted or not ]
+ * @token  [ the accumulated strings of arrays of all 5 sorting algorithms ]
+ */
 var A, ax, bx, i, n, s, sorted, dbit, token = "";
-var c;
 
 function insertionSort() {
     let deck = A[i], hand = i-1;
@@ -66,7 +74,7 @@ function insertionSort() {
 
 function selectionSort() {
     let min = i;
-    // searches for the minimum element along A[0...n-i-1] elements
+    // searches for the minimum element among the A[i...n-1] elements
     for (let j = i+1; j < n; ++j) {
         if (A[j] < A[min]) min = j;
     }
