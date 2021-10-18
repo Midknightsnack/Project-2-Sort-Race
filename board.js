@@ -62,8 +62,10 @@ class Board {
         alg_4.decode();
     
         textSize(15);
-        fill(255);
-        for (let i = 0; i < token.length; i++, this.row += 20) text(token[i], this.row, this.col);
+        fill(255); 
+        for (let i = 0; i < token.length; i++, this.row += 20) {
+            text(token[i], this.row, this.col);
+        }
     }
 }
 

@@ -20,6 +20,7 @@ class Manager {
             size: 1,
             buffer: [],
             done: false,
+            color: [],
         }
     }
 
@@ -33,6 +34,7 @@ class Manager {
         n = this.CB.buffer.length;
         s = this.CB.size;
         sorted = this.CB.done;
+        c = this.CB.color;
     }
 
     decode() {
@@ -41,16 +43,17 @@ class Manager {
             case "Insertion" : insertionSort(); sorted = (i==n); break;
             case "Selection" : selectionSort(); sorted = (i==n); break;
             case "GoldsPore" : goldPoreSort();  sorted = dbit;   break;
-            case "MergeSort" : mergeSort();     sorted = s>n;    break;
+            case "MergeSort" : mergeSort();     sorted = s>=n;    break;
             default : break;
         }
-        this.save_state({ idx: ++i, size: 2*s, buffer: A, done: sorted });
+        this.save_state({ idx: ++i, size: 2*s, buffer: A, done: sorted, color: c });
         if (!sorted) token += this.CB.buffer.join('') + " ";
     }
 }
 
 // global memory
 var A, ax, bx, i, n, s, sorted, dbit, token = "";
+var c;
 
 function insertionSort() {
     let deck = A[i], hand = i-1;
