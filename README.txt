@@ -12,7 +12,15 @@ Introduction
     a sorting algorithm based on the user's input.
 
 Zip Contents
-    File readme.txt. This file.
+    1. README.txt. This file contains information about the program.
+    2. 335-03-p2-CodeGang/assets/decorate.css. Controlling web page style.
+    3. 335-03-p2-CodeGang/assets/drawstuff.js. Creates the grid on the web page.
+    4. 335-03-p2-CodeGang/board.js. Contains functions that control how the entire program functions. 
+    5. 335-03-p2-CodeGang/manager.js. Manages how the sorting functions operate on the web page.
+    6. 335-03-p2-CodeGang/sort.js. Contains sorting functions that write themselves on the web page.
+    7. 335-03-p7-CodeGang/p5.js. The P5 package that is loaded into HTML.
+    8. 335-03-p1-CodeGang/index.html. Sets up the webpage where the program is set.
+
 
 
 
