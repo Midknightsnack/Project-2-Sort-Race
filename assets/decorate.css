@@ -18,9 +18,9 @@ body {
   padding: 0;
   margin: 0;
 
-  background-color: rgb(170, 245, 255);
+  background-color: rgb(163, 220, 253);
 }
 
 canvas {
-  background-color: black;
+  background-color: rgb(51, 88, 192); /*default was black*/
 }
